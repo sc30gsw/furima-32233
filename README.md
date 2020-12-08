@@ -15,6 +15,7 @@
 
 ### Association
 
+- has_many :products
 - has_many :item_users
 
 ## productsテーブル
@@ -30,6 +31,7 @@
 | delivery_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
+| item_user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -67,4 +69,4 @@
 
 - belongs_to :product
 - belongs_to :user
-- belongs_to :purchase_info
+- has_one    :purchase_info
