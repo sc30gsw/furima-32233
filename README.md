@@ -55,7 +55,7 @@
 
 ### Association
 
-- has_one :item_user
+- belongs_to :item_user
 - has_one_active_hash :prefecture_id
 
 ## item_usersテーブル
