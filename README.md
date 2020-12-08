@@ -34,12 +34,12 @@
 
 ### Association
 
-- belongs_to          :user
-- has_one_active_hash :category_id
-- has_one_active_hash :postage_type_id
-- has_one_active_hash :prefecture_id
-- has_one_active_hash :delivery_day_id
-- has_one             :product_user
+- belongs_to             :user
+- belongs_to_active_hash :category
+- belongs_to_active_hash :postage_type
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :delivery_day
+- has_one                :product_user
 
 ## purchase_infoテーブル
 
@@ -55,7 +55,6 @@
 ### Association
 
 - belongs_to :product_user
-- has_one_active_hash :prefecture_id
 
 ## product_usersテーブル
 
