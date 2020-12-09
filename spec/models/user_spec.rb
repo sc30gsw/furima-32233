@@ -10,11 +10,6 @@ RSpec.describe User, type: :model do
       it 'すべての項目が存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it 'passwordが英数6文字以上であれば登録できる' do
-        @user.password = "aaa111"
-        @user.password_confirmation = "aaa111"
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録がうまくいかないとき' do
@@ -27,6 +22,11 @@ RSpec.describe User, type: :model do
         @user.email = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
+      it 'emailに.@を含んでいなければ登録できないこと' do
+        @user.email = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it '重複したemailが存在する場合登録できない' do
         @user.save
@@ -69,10 +69,20 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
+      it 'family_nameか漢字・ひらがな・カタカナ以外は登録できないこと' do
+        @user.family_name = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name is invalid. Input full-width characters")
+      end
       it 'first_nameが空だと登録できない' do
         @user.first_name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+      it 'first_nameが漢字・ひらがな・カタカナ以外は登録できないこと' do
+        @user.first_name = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters")
       end
       it 'family_name_readingが空だと登録できない' do
         @user.family_name_reading = nil
