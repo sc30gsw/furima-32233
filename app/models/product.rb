@@ -14,8 +14,16 @@ class Product < ApplicationRecord
     validates :category_id
     validates :condition_id
     validates :postage_type_id
-    validates :preefcture_id
+    validates :prefecture_id
     validates :delivery_day_id
     validates :price
+  end
+
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :condition_id
+    validates :postage_type_id
+    validates :prefecture_id
+    validates :delivery_day_id
   end
 end
