@@ -59,8 +59,8 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password is invalid. Input half-width characters")
       end
       it 'passwordが数字のみだと登録できない' do
-        @user.password = "111111"
-        @user.password_confirmation = "111111"
+        @user.password = 111111
+        @user.password_confirmation = 111111
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid. Input half-width characters")
       end
