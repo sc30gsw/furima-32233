@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product do
     name {Faker::Name.name}
-    content {Faker::Loerm.sentence}
-    category_id {２}
+    content {Faker::Lorem.sentence}
+    category_id {2}
     condition_id {2}
     postage_type_id {2}
     prefecture_id {2}
@@ -12,7 +12,7 @@ FactoryBot.define do
     association :user
 
     after(:build) do |product|
-      product.image.attach(io: File.open('public/images/test_image.png'), filename: test_image.png)
+      product.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
   end
 end
