@@ -33,11 +33,6 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Category can't be blank")
       end
-      it '商品のカテゴリーが数値以外だと出品できない' do
-        @product.category_id = 'test'
-        @product.valid?
-        expect(@product.errors.full_messages).to include('Category is not a number')
-      end
       it '商品のカテゴリーの値が1のとき出品できない' do
         @product.category_id = 1
         @product.valid?
@@ -47,11 +42,6 @@ RSpec.describe Product, type: :model do
         @product.condition_id = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Condition can't be blank")
-      end
-      it '商品状態が数値以外だと出品できない' do
-        @product.condition_id = 'test'
-        @product.valid?
-        expect(@product.errors.full_messages).to include('Condition is not a number')
       end
       it '商品状態の値が1だと出品できない' do
         @product.condition_id = 1
@@ -63,11 +53,6 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Postage type can't be blank")
       end
-      it '配送料の負担がが数値以外だと出品できない' do
-        @product.postage_type_id = 'test'
-        @product.valid?
-        expect(@product.errors.full_messages).to include('Postage type is not a number')
-      end
       it '配送料の負担の値が1だと出品できない' do
         @product.postage_type_id = 1
         @product.valid?
@@ -78,11 +63,6 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it '発送元の地域が数値以外だと出品できない' do
-        @product.prefecture_id = 'test'
-        @product.valid?
-        expect(@product.errors.full_messages).to include('Prefecture is not a number')
-      end
       it '発送元の地域の値が1以外だと出品できない' do
         @product.prefecture_id = 1
         @product.valid?
@@ -92,11 +72,6 @@ RSpec.describe Product, type: :model do
         @product.delivery_day_id = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Delivery day can't be blank")
-      end
-      it '発送までの日数が数値以外だと出品できない' do
-        @product.delivery_day_id = 'test'
-        @product.valid?
-        expect(@product.errors.full_messages).to include('Delivery day is not a number')
       end
       it '発送までの日数の値が1以外だと出品できない' do
         @product.delivery_day_id = 1
