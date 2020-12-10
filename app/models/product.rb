@@ -18,7 +18,7 @@ class Product < ApplicationRecord
     validates :postage_type_id
     validates :prefecture_id
     validates :delivery_day_id
-    validates :price
+    validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters"}
   end
 
   with_options numericality: { other_than: 1 } do
