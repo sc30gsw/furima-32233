@@ -7,8 +7,10 @@ class Product < ApplicationRecord
   belongs_to :pastage_type
   belongs_to :prefecture
   belongs_to :delivery_day
+  has_one_attached :image
   
   with_options presence: true do
+    validates :image
     validates :name
     validates :content
     validates :category_id
