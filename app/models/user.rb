@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :product
+  has_many :products
 
   name_validate = /\A[ぁ-んァ-ン一-龥]/
   name_reading_validate = /\A[ァ-ヶー－]+\z/
