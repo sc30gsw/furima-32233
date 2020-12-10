@@ -21,6 +21,8 @@ class Product < ApplicationRecord
     validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters"}
   end
 
+  validates_inclusion_of :price , in: 300..9999999
+
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :condition_id
