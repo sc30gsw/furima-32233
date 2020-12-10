@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i, message: "is invalid. Input half-width characters" }
-    validates :family_name, format: { with: name_validate, message: "is invalid. Input full-width characters" }
-    validates :first_name, format: { with: name_validate, message: "is invalid. Input full-width characters" }
-    validates :family_name_reading, format: { with: name_reading_validate, message: "is invalid. Input full-width katakana characters" }
-    validates :first_name_reading, format: { with: name_reading_validate, message: "is invalid. Input full-width katakana characters" }
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i, message: 'is invalid. Input half-width characters' }
+    validates :family_name, format: { with: name_validate, message: 'is invalid. Input full-width characters' }
+    validates :first_name, format: { with: name_validate, message: 'is invalid. Input full-width characters' }
+    validates :family_name_reading, format: { with: name_reading_validate, message: 'is invalid. Input full-width katakana characters' }
+    validates :first_name_reading, format: { with: name_reading_validate, message: 'is invalid. Input full-width katakana characters' }
     validates :birth
   end
 end
