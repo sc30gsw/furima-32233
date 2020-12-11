@@ -7,7 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: @product, url: products_path, method: :post, local: true) do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%# エラーバンドリング%>
     <%= render 'shared/error_messages', model: @product %>
 
     <%# 出品画像 %>
