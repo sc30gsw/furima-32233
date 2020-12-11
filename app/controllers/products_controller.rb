@@ -51,4 +51,5 @@ class ProductsController < ApplicationController
     unless user_signed_in? && current_user.id == product.user.id
       redirect_to root_path 
     end
+  end
 end
