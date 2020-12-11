@@ -7,11 +7,10 @@ app/assets/stylesheets/items/new.css %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with(model: @product, url: product_path, method: :post, local: true) do |f| %>
+    <%= form_with(model: @product, local: true) do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%# エラーバンドリング%>
+    <%= render 'shared/error_messages', model: @product %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -132,7 +131,7 @@ app/assets/stylesheets/items/new.css %>
         に同意したことになります。
       </p>
     </div>
-    <%# /注意書き %>
+
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
