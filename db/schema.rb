@@ -33,11 +33,6 @@ ActiveRecord::Schema.define(version: 2020_12_12_023325) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "product_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
@@ -66,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_023325) do
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
-    t.string "adress", null: false
+    t.string "address", null: false
     t.string "building_name"
     t.string "phone_number", null: false
     t.bigint "product_user_id", null: false
