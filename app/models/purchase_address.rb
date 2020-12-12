@@ -14,6 +14,7 @@ class PurchaseAddress
     validates :product_user_id
     validates :product_id
     validates :user_id
+    validates :token
   end
   
 
