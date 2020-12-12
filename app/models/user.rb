@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
+  has_many :proudct_users
 
   name_validate = /\A[ぁ-んァ-ン一-龥]/
   name_reading_validate = /\A[ァ-ヶー－]+\z/
