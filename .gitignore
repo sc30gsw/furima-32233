@@ -30,3 +30,4 @@
 yarn-debug.log*
 .yarn-integrity
 .Dr_Store
+app/models/user_purcahse.rb
