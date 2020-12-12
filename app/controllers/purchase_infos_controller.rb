@@ -3,13 +3,13 @@ class PurchaseInfosController < ApplicationController
   end
 
   def new
-    @purcahse_info = PurchaseInfo.new
+    @purcahse_adress = PurchaseAdress.new
   end
 
   def create
-    @purchase_info = PurchaseInfo.new(purchase_params)
-    if @purcahse_info.valid?
-      @purcahse_info.save
+    @purchase_adress = PurchaseAdress.new(purchase_params)
+    if @purcahse_adress.valid?
+      @purcahse_adress.save
       redirect_to root_path
     else
       render action: :new
