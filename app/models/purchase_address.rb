@@ -16,9 +16,9 @@ class PurchaseAddress
     validates :user_id
     validates :token
   end
-  
 
-  validates :prefecture_id, numericality: { other_than: 1 }
+  
+  validates :prefecture_id, numericality: { other_than: 1 } 
 
   def save
     # product_usersテーブルの情報
