@@ -33,7 +33,7 @@
     <%# エラーバンドリング%>
     <%= render 'shared/error_messages', model: @purchase_address %>
 
-    <%= form_with(model: @purchae_address, url: product_purchase_infos_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true) do |f| %>
+    <%= form_with(model: @purchase_address, url: product_purchase_infos_path, method: :post, id: 'charge-form', class: 'transaction-form-wrap',local: true) do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

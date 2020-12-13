@@ -5,6 +5,7 @@ class PurchaseInfosController < ApplicationController
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -16,17 +17,25 @@ class PurchaseInfosController < ApplicationController
   end
 
   private
-
   def purchase_params
-    params.permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], token: params[:token])
+    params.require(:purchase_address)
+    .permit(
+      :postal_code, 
+      :prefecture_id, 
+      :city, 
+      :address, 
+      :building_name, 
+      :phone_number, 
+      :token)
+      .merge(user_id: current_user.id, product_id: params[:product_id])
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
-        amount: purchase_params(product_id: params[:price]),
+        amount: @product.price,
         card: purchase_params[:token],
         currency: 'jpy'
       )
-    end
+  end
 end
