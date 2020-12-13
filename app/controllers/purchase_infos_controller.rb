@@ -5,6 +5,9 @@ class PurchaseInfosController < ApplicationController
   def index
     @purchase_address = PurchaseAddress.new
     @product = Product.find(params[:product_id])
+    if @product.product_user.present?
+      redirect_to root_path 
+    end
   end
 
   def create
