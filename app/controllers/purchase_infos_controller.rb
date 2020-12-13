@@ -1,17 +1,16 @@
 class PurchaseInfosController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :product, only: [:index, :create]
 
   
   def index
     @purchase_address = PurchaseAddress.new
-    @product = Product.find(params[:product_id])
     if @product.product_user.present?
       redirect_to root_path 
     end
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -25,6 +24,10 @@ class PurchaseInfosController < ApplicationController
   private
   def purchase_params
     params.require(:purchase_address).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :token).merge(user_id: current_user.id, product_id: params[:product_id])
+  end
+
+  def product
+    @product = Product.find(params[:product_id])
   end
 
   def pay_item
