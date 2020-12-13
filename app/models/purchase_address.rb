@@ -23,13 +23,6 @@ class PurchaseAddress
     # product_usersテーブルの情報
     product_user = ProductUser.create(product_id: product_id, user_id: user_id)
     # 住所テーブルの情報
-    PurchaseInfo.create(
-      postal_code: postal_code, 
-      prefecture_id: prefecture_id, 
-      city: city,
-      address: address, 
-      building_name: building_name, 
-      phone_number: phone_number, 
-      product_user_id: product_user.id)
+    PurchaseInfo.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, product_user_id: product_user.id)
   end
 end
