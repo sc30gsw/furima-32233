@@ -66,6 +66,18 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Address can't be blank")
       end
+
+      it 'user_idの値が空だと購入できない' do
+        @purchase_address.user_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'product_idの値が空だと購入できない' do
+        @purchase_address.product_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Product can't be blank")
+      end
     end
   end
 end
