@@ -1,4 +1,7 @@
 class PurchaseInfosController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+
+  
   def index
     @purchase_address = PurchaseAddress.new
     @product = Product.find(params[:product_id])
